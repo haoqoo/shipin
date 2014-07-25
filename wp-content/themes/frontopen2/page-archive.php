@@ -38,7 +38,6 @@ Template Name: 文章归档
 			});
 		/* ]]> */
 	</script>
-
 <div id="container">
 <div class="main" style="width:96%">
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -46,8 +45,7 @@ Template Name: 文章归档
 <h1 class="entry-title">文章归档</h1>
 <div class="entry-content" style="border-bottom:none">
 <div class="article article_page">
-		<p class="articles_all"><strong><?php bloginfo('name'); ?></strong> 目前共有文章： <?php echo $hacklog_archives->PostCount();?>篇</p><?php echo $hacklog_archives->PostList();?>
-	
+  <p class="articles_all"><strong><?php bloginfo('name'); ?></strong> 目前共有文章： <?php echo $hacklog_archives->PostCount();?>篇</p><?php echo $hacklog_archives->PostList();?>
 </div>
 </div>
 </div>
@@ -55,6 +53,5 @@ Template Name: 文章归档
 	<?php endif; ?>
 </div>
 </div>
-
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -36,7 +36,7 @@
 
 	?></title>
 <link rel="shortcut icon" href="/favicon.ico" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>?ver=<?php echo VRESION?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/jquery.js"></script>
 <?php
@@ -84,5 +84,7 @@
 	<?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
     <?php wp_nav_menu( array( 'container_class' => 'menu-header-m mIco', 'theme_location' => 'primary' , 'depth' => 1 , 'menu_class'  => 'menu-header-m', 'menu_id' => 'remen_ul',) ); ?>
     </div>
-    
+<script src="<?php bloginfo('template_url'); ?>/include/ai.js"></script>
+<script src="<?php bloginfo('template_url'); ?>/include/slip.js"></script>
+<script src="<?php bloginfo('template_url'); ?>/include/page.js"></script>
     <div class="conter marauto">

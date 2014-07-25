@@ -62,18 +62,7 @@
 				return '<div class="aligncenter mplayer" style="width:350px"><embed src="'.get_bloginfo("template_url").'/images/shortcode/mainplayer.swf?url='.$content.'&autoplay='.$auto.'&loop=0&descri='.$title.'" type="application/x-shockwave-flash" allowscriptaccess="always"  wmode="opaque" width="350" height="40"></div>';
 				}
 				add_shortcode('song','doubanplayer2');
-				
-				function nivo($atts, $content=null) {
-				extract(shortcode_atts(array("height"=>"300"),$atts));
-					$return = '<script type="text/javascript">jQuery(document).ready(function($){  var $jv=jQuery.noConflict();$jv(".deveconslider").nivoSlider({pauseTime: 5000,controlNav: false});});
-	</script><div class="deveconslider" style="height:'.$height.'px">';
-					$return .= do_shortcode($content) ;
-					$return .= '</div>';
-					$returncode = preg_replace("/<(\/?br.*?)>/si"," ", $return);
-					return $returncode;
-				}
-				add_shortcode('nivo' , 'nivo' );
-				
+								
 				
 				function image($atts, $content=null) {
 					extract(shortcode_atts(array("height"=>"300","title"=>""),$atts));
@@ -98,7 +87,7 @@
 				//////////////istudio短代码支持（改良）/////////////
 				function downlink($atts,$content=null){
 					extract(shortcode_atts(array("href"=>'http://'),$atts));
-				return '<div class="but_down"><a href="'.$href.'" target="_blank"><span>'.$content.'</span></a><div class="clear"></div></div>';
+				return '<div class="but_down"><a href="'.$href.'" target="_blank" rel="nofollow"><span>'.$content.'</span></a><div class="clear"></div></div>';
 				}
 				add_shortcode('Downlink','downlink');
 				function flvlink($atts,$content=null){
@@ -344,30 +333,7 @@ $(".toggle").click(function(){$(this).next().slideToggle('slow')});
        </table>
       </div>
 </fieldset> 
-
-<fieldset>
-<legend class="toggle">Nivo幻灯片</legend>
-	<div class="none">
-   <p><span style="color:#808000;">幻灯片默认尺寸为：620x300px ，图片自动按比例缩放裁剪</span></p>
-	   <table width="600" border="1" class="devetable" >
-	     <tr><td width="120"><strong>默认尺寸</strong></td><td width="463" class="devetable2"><code>[nivo]</code><br />
-	     <code>[image title=&quot;标题1&quot;]http://www.xxx.com/1.jpg[/image]</code><br />
-	     <code>[image title=&quot;标题2&quot;]http://www.xxx.com/2.jpg[/image]</code><br />
-	     <code>[image title=&quot;标题3&quot;]http://www.xxx.com/3.jpg[/image]</code><br />
-	     <code>[/nivo]</code><br /></td></tr>
-       </table>
-        <br>
-        <table width="600" border="1" class="devetable" >
-	     <tr><td width="120"><strong>调整高度</strong></td><td width="463" class="devetable2"><code>[nivo height=500]</code><br />
-	      <code>[image height=500 title=&quot;标题1&quot;]http://www.xxx.com/1.jpg[/image]</code><br />
-	     <code>[image height=500 title=&quot;标题2&quot;]http://www.xxx.com/2.jpg[/image]</code><br />
-	     <code>[image height=500 title=&quot;标题3&quot;]http://www.xxx.com/3.jpg[/image]</code><br />
-	     <code>[/nivo]</code><br /></td></tr>
-       </table>
-      </div>
-</fieldset> 
-    
-    
+      
     <fieldset>
 <legend class="toggle">兼容iStudio短代码</legend>
 	<div class="none">
@@ -426,8 +392,6 @@ function Deve_shortcode_buttons() {
 		QTags.addButton( 'deve14', '百度地图', '[baidumap zoom="地图级别" center="X坐标,Y坐标"]');
 		QTags.addButton( 'deve15', '谷歌地图', '[googlemap src="URL"]');
 		QTags.addButton( 'deve16', '谷歌地图（高级）', '[map z="地图级别" address="X坐标,Y坐标"]');
-		QTags.addButton( 'deve17', 'Nivo幻灯片', '[nivo]\n[image title="标题1"]图片地址1[/image]\n[image title="标题2"]图片地址2[/image]\n[image title="标题3"]图片地址3[/image]\n[/nivo]');
-		QTags.addButton( 'deve18', '文章翻页', '<!--nextpage--\>');
 		QTags.addButton( 'deve19', '收缩栏', '[toggle title="标题"]请在此输入内容[/toggle]');
 	</script>
 	<?php }

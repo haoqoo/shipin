@@ -853,6 +853,7 @@ function _wp_filter_build_unique_id($tag, $function, $priority) {
 	if (is_object($function[0]) ) {
 		// Object Class Calling
 		if ( function_exists('spl_object_hash') ) {
+			#spl_object_hash return hashcode
 			return spl_object_hash($function[0]) . $function[1];
 		} else {
 			$obj_idx = get_class($function[0]).$function[1];

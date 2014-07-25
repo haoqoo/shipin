@@ -11,7 +11,11 @@
 /** Make sure that the WordPress bootstrap has run before continuing. */
 require( dirname(__FILE__) . '/wp-load.php' );
 
+/** 加载login-functions辅助函数**/
+//require(dirname(__FILE__) . '/login-functions.php');
+
 // Redirect to https login if forced to use SSL
+// 不明白啊，这个判断一致无法执行。
 if ( force_ssl_admin() && ! is_ssl() ) {
 	if ( 0 === strpos($_SERVER['REQUEST_URI'], 'http') ) {
 		wp_redirect( set_url_scheme( $_SERVER['REQUEST_URI'], 'https' ) );
@@ -92,12 +96,13 @@ function login_header( $title = 'Log In', $message = '', $wp_error = '' ) {
 	 */
 	do_action( 'login_head' );
 
-	if ( is_multisite() ) {
+	if ( is_multisite() ) {//是否多网站形式
 		$login_header_url   = network_home_url();
 		$login_header_title = get_current_site()->site_name;
 	} else {
-		$login_header_url   = __( 'https://wordpress.org/' );
-		$login_header_title = __( 'Powered by WordPress' );
+		//修改wordpress链接
+		$login_header_url   = __( '' );
+		$login_header_title = __( '视频' );
 	}
 
 	/**
@@ -108,6 +113,8 @@ function login_header( $title = 'Log In', $message = '', $wp_error = '' ) {
 	 * @param string $login_header_url Login header logo URL.
 	 */
 	$login_header_url = apply_filters( 'login_headerurl', $login_header_url );
+
+	//echo $login_header_url.'hearder_url';
 	/**
 	 * Filter the title attribute of the header logo above login form.
 	 *
@@ -116,6 +123,7 @@ function login_header( $title = 'Log In', $message = '', $wp_error = '' ) {
 	 * @param string $login_header_title Login header logo title attribute.
 	 */
 	$login_header_title = apply_filters( 'login_headertitle', $login_header_title );
+	//echo $login_header_title.'login_header_title';
 
 	$classes = array( 'login-action-' . $action, 'wp-core-ui' );
 	if ( wp_is_mobile() )
@@ -147,6 +155,7 @@ function login_header( $title = 'Log In', $message = '', $wp_error = '' ) {
 	</head>
 	<body class="login <?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 	<div id="login">
+		<!--去掉wordpress官网链接-->
 		<h1><a href="##"><?php bloginfo( 'name' ); ?></a></h1>
 	<?php
 
@@ -409,6 +418,7 @@ if ( isset($_GET['key']) )
 if ( !in_array( $action, array( 'postpass', 'logout', 'lostpassword', 'retrievepassword', 'resetpass', 'rp', 'register', 'login' ), true ) && false === has_filter( 'login_form_' . $action ) )
 	$action = 'login';
 
+//echo $action . '';
 nocache_headers();
 
 header('Content-Type: '.get_bloginfo('html_type').'; charset='.get_bloginfo('charset'));
