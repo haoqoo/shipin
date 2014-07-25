@@ -17,6 +17,9 @@
  */
 define( 'WPINC', 'wp-includes' );
 
+//一些有用的小东西，都可以在这个文件下面
+define('WPHELPER','wp-helper');
+
 // Include files required for initialization.
 require( ABSPATH . WPINC . '/load.php' );
 require( ABSPATH . WPINC . '/default-constants.php' );
@@ -70,10 +73,14 @@ wp_set_lang_dir();
 // Load early WordPress files.
 require( ABSPATH . WPINC . '/compat.php' );
 require( ABSPATH . WPINC . '/functions.php' );
+
 require( ABSPATH . WPINC . '/class-wp.php' );
 require( ABSPATH . WPINC . '/class-wp-error.php' );
 require( ABSPATH . WPINC . '/plugin.php' );
 require( ABSPATH . WPINC . '/pomo/mo.php' );
+
+//加载去掉google fonts的小玩意。
+require( ABSPATH . WPHELPER . '/disable-google-fonts.php' );
 
 // Include the wpdb class and, if present, a db.php database drop-in.
 require_wp_db();
