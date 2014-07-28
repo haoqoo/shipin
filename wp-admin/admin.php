@@ -29,7 +29,7 @@ if ( isset($_GET['import']) && !defined('WP_LOAD_IMPORTERS') )
 
 require_once(dirname(dirname(__FILE__)) . '/wp-load.php');
 
-nocache_headers();
+nocache_headers(); 
 
 if ( get_option('db_upgraded') ) {
 	//echo 'db_upgraded……';
