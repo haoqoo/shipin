@@ -983,6 +983,7 @@ function wp_get_nocache_headers() {
 		 * }
 		 */
 		$headers = (array) apply_filters( 'nocache_headers', $headers );
+		//print_r($headers);
 	}
 	$headers['Last-Modified'] = false;
 	return $headers;

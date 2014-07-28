@@ -43,6 +43,7 @@ function get_option( $option, $default = false ) {
 	 *                               Default false to skip it.
 	 */
 	$pre = apply_filters( 'pre_option_' . $option, false );
+	//echo $pre;
 	if ( false !== $pre )
 		return $pre;
 

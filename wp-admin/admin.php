@@ -32,6 +32,7 @@ require_once(dirname(dirname(__FILE__)) . '/wp-load.php');
 nocache_headers();
 
 if ( get_option('db_upgraded') ) {
+	//echo 'db_upgraded……';
 	flush_rewrite_rules();
 	update_option( 'db_upgraded',  false );
 
@@ -42,6 +43,7 @@ if ( get_option('db_upgraded') ) {
 	 */
 	do_action( 'after_db_upgrade' );
 } elseif ( get_option('db_version') != $wp_db_version && empty($_POST) ) {
+	//echo 'after_db_upgrade……';
 	if ( !is_multisite() ) {
 		wp_redirect( admin_url( 'upgrade.php?_wp_http_referer=' . urlencode( wp_unslash( $_SERVER['REQUEST_URI'] ) ) ) );
 		exit;
@@ -105,7 +107,9 @@ if ( isset( $_REQUEST['taxonomy'] ) && taxonomy_exists( $_REQUEST['taxonomy'] ) 
 	$taxnow = $_REQUEST['taxonomy'];
 else
 	$taxnow = '';
-
+// echo 'WP_NETWORK_ADMIN:'.WP_NETWORK_ADMIN;
+// echo 'WP_USER_ADMIN:'.WP_NETWORK_ADMIN;
+//这里和角色有关。
 if ( WP_NETWORK_ADMIN )
 	require(ABSPATH . 'wp-admin/network/menu.php');
 elseif ( WP_USER_ADMIN )
