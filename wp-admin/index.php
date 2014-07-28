@@ -34,10 +34,12 @@ $help = '<p>' . __( 'Welcome to your WordPress Dashboard! This is the screen you
 // Not using chaining here, so as to be parseable by PHP4.
 $screen = get_current_screen();
 
+//$screen =null;
+
 $screen->add_help_tab( array(
 	'id'      => 'overview',
 	'title'   => __( 'Overview' ),
-	'content' => $help,
+	'content' => ‘’,
 ) );
 
 // Help tabs
@@ -48,7 +50,7 @@ $help .= '<p>' . __( 'Links in the Toolbar at the top of the screen connect your
 $screen->add_help_tab( array(
 	'id'      => 'help-navigation',
 	'title'   => __( 'Navigation' ),
-	'content' => $help,
+	'content' => ‘’,
 ) );
 
 $help  = '<p>' . __( 'You can use the following controls to arrange your Dashboard screen to suit your workflow. This is true on most other administration screens as well.' ) . '</p>';

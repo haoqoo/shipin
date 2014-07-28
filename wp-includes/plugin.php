@@ -432,6 +432,8 @@ function do_action($tag, $arg = '') {
 	else
 		++$wp_actions[$tag];
 
+
+
 	// Do 'all' actions first
 	if ( isset($wp_filter['all']) ) {
 		$wp_current_filter[] = $tag;
@@ -463,7 +465,7 @@ function do_action($tag, $arg = '') {
 	}
 
 	reset( $wp_filter[ $tag ] );
-
+	
 	do {
 		foreach ( (array) current($wp_filter[$tag]) as $the_ )
 			if ( !is_null($the_['function']) )
@@ -540,10 +542,16 @@ function do_action_ref_array($tag, $args) {
 
 	reset( $wp_filter[ $tag ] );
 
+
 	do {
 		foreach( (array) current($wp_filter[$tag]) as $the_ )
-			if ( !is_null($the_['function']) )
+			if ( !is_null($the_['function']) ){
+				if($tag=='admin_bar_menu'){
+					echo $the_['function'] .':';
+					print_r( array_slice($args, 0, (int) $the_['accepted_args']) . '<br>');
+				}
 				call_user_func_array($the_['function'], array_slice($args, 0, (int) $the_['accepted_args']));
+			}
 
 	} while ( next($wp_filter[$tag]) !== false );
 

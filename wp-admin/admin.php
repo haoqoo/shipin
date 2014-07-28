@@ -176,6 +176,8 @@ else if ( isset($plugin_page) )
 else if ( isset($pagenow) )
 	$hook_suffix = $pagenow;
 
+//echo 'hook_suffix:' . $hook_suffix;
+
 set_current_screen();
 
 // Handle plugin admin pages.

@@ -11,5 +11,7 @@
 	define('HIDDEN-PLUGIN', true);
 	//隐藏工具
 	define('HIDDEN-TOOL', true);
+	//隐藏外观
+	//define('HIDDEN-');
 
  ?>
