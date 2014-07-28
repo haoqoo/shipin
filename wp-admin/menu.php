@@ -21,7 +21,7 @@
  * @name $menu
  * @var array
  */
-//左侧菜单（仪表盘）
+//左侧菜单（仪表盘） __()函数是国际化的函数
 $menu[2] = array( __('Dashboard'), 'read', 'index.php', '', 'menu-top menu-top-first menu-icon-dashboard', 'menu-dashboard', 'dashicons-dashboard' );
 
 //print_r($menu[2]);
@@ -33,25 +33,28 @@ if ( is_multisite() ) {
 }
 
 //===检查框架，插件，主题  更新。 屏蔽===
-	// if ( ! is_multisite() || is_super_admin() )
-	// 	$update_data = wp_get_update_data();
+if (HIDDEN-UPDATE){
+	if ( ! is_multisite() || is_super_admin() )
+		$update_data = wp_get_update_data();
 
-	// if ( ! is_multisite() ) {
-	// 	if ( current_user_can( 'update_core' ) )
-	// 		$cap = 'update_core';
-	// 	elseif ( current_user_can( 'update_plugins' ) )
-	// 		$cap = 'update_plugins';
-	// 	else
-	// 		$cap = 'update_themes';
-	// 	//echo $cap;
-	// 	$submenu[ 'index.php' ][10] = array( sprintf( __('Updates %s'), "<span class='update-plugins count-{$update_data['counts']['total']}' title='{$update_data['title']}'><span class='update-count'>" . number_format_i18n($update_data['counts']['total']) . "</span></span>" ), $cap, 'update-core.php');
-	// 	unset( $cap );
-	// }
+	if ( ! is_multisite() ) {
+		if ( current_user_can( 'update_core' ) )
+			$cap = 'update_core';
+		elseif ( current_user_can( 'update_plugins' ) )
+			$cap = 'update_plugins';
+		else
+			$cap = 'update_themes';
+		//echo $cap;
+		$submenu[ 'index.php' ][10] = array( sprintf( __('Updates %s'), "<span class='update-plugins count-{$update_data['counts']['total']}' title='{$update_data['title']}'><span class='update-count'>" . number_format_i18n($update_data['counts']['total']) . "</span></span>" ), $cap, 'update-core.php');
+		unset( $cap );
+	}
+}
 //===检查框架，插件，主题  更新。 屏蔽end===
 
 
 $menu[4] = array( '', 'read', 'separator1', '', 'wp-menu-separator' );
 
+//文章
 $menu[5] = array( __('Posts'), 'edit_posts', 'edit.php', '', 'open-if-no-js menu-top menu-icon-post', 'menu-posts', 'dashicons-admin-post' );
 	$submenu['edit.php'][5]  = array( __('All Posts'), 'edit_posts', 'edit.php' );
 	/* translators: add new post */
@@ -66,6 +69,7 @@ $menu[5] = array( __('Posts'), 'edit_posts', 'edit.php', '', 'open-if-no-js menu
 	}
 	unset($tax);
 
+//多媒体
 $menu[10] = array( __('Media'), 'upload_files', 'upload.php', '', 'menu-top menu-icon-media', 'menu-media', 'dashicons-admin-media' );
 	$submenu['upload.php'][5] = array( __('Library'), 'upload_files', 'upload.php');
 	/* translators: add new file */
@@ -166,24 +170,29 @@ function _add_themes_utility_last() {
 	add_submenu_page('themes.php', _x('Editor', 'theme editor'), _x('Editor', 'theme editor'), 'edit_themes', 'theme-editor.php');
 }
 
-$count = '';
-if ( ! is_multisite() && current_user_can( 'update_plugins' ) ) {
-	if ( ! isset( $update_data ) )
-		$update_data = wp_get_update_data();
-	$count = "<span class='update-plugins count-{$update_data['counts']['plugins']}'><span class='plugin-count'>" . number_format_i18n($update_data['counts']['plugins']) . "</span></span>";
-}
-
-$menu[65] = array( sprintf( __('Plugins %s'), $count ), 'activate_plugins', 'plugins.php', '', 'menu-top menu-icon-plugins', 'menu-plugins', 'dashicons-admin-plugins' );
-
-$submenu['plugins.php'][5]  = array( __('Installed Plugins'), 'activate_plugins', 'plugins.php' );
-
-	if ( ! is_multisite() ) {
-		/* translators: add new plugin */
-		$submenu['plugins.php'][10] = array( _x('Add New', 'plugin'), 'install_plugins', 'plugin-install.php' );
-		$submenu['plugins.php'][15] = array( _x('Editor', 'plugin editor'), 'edit_plugins', 'plugin-editor.php' );
+//===检查框架，插件，主题  更新。 屏蔽===
+if (HIDDEN-PLUGIN) {
+	$count = '';
+	if ( ! is_multisite() && current_user_can( 'update_plugins' ) ) {
+		if ( ! isset( $update_data ) )
+			$update_data = wp_get_update_data();
+		$count = "<span class='update-plugins count-{$update_data['counts']['plugins']}'><span class='plugin-count'>" . number_format_i18n($update_data['counts']['plugins']) . "</span></span>";
 	}
 
-unset( $update_data );
+	$menu[65] = array( sprintf( __('Plugins %s'), $count ), 'activate_plugins', 'plugins.php', '', 'menu-top menu-icon-plugins', 'menu-plugins', 'dashicons-admin-plugins' );
+
+	$submenu['plugins.php'][5]  = array( __('Installed Plugins'), 'activate_plugins', 'plugins.php' );
+
+		if ( ! is_multisite() ) {
+			/* translators: add new plugin */
+			$submenu['plugins.php'][10] = array( _x('Add New', 'plugin'), 'install_plugins', 'plugin-install.php' );
+			$submenu['plugins.php'][15] = array( _x('Editor', 'plugin editor'), 'edit_plugins', 'plugin-editor.php' );
+		}
+	unset( $update_data );	
+}
+//===检查框架，插件，主题  更新。 屏蔽 end===
+
+
 
 if ( current_user_can('list_users') )
 	$menu[70] = array( __('Users'), 'list_users', 'users.php', '', 'menu-top menu-icon-users', 'menu-users', 'dashicons-admin-users' );
@@ -208,7 +217,9 @@ if ( current_user_can('list_users') ) {
 		$submenu['profile.php'][10] = array(__('Add New User'), 'promote_users', 'user-new.php');
 }
 
-$menu[75] = array( __('Tools'), 'edit_posts', 'tools.php', '', 'menu-top menu-icon-tools', 'menu-tools', 'dashicons-admin-tools' );
+//=== 屏蔽 小工具===
+if (HIDDEN-TOOL) {
+	$menu[75] = array( __('Tools'), 'edit_posts', 'tools.php', '', 'menu-top menu-icon-tools', 'menu-tools', 'dashicons-admin-tools' );
 	$submenu['tools.php'][5] = array( __('Available Tools'), 'edit_posts', 'tools.php' );
 	$submenu['tools.php'][10] = array( __('Import'), 'import', 'import.php' );
 	$submenu['tools.php'][15] = array( __('Export'), 'export', 'export.php' );
@@ -216,6 +227,9 @@ $menu[75] = array( __('Tools'), 'edit_posts', 'tools.php', '', 'menu-top menu-ic
 		$submenu['tools.php'][25] = array( __('Delete Site'), 'manage_options', 'ms-delete-site.php' );
 	if ( ! is_multisite() && defined('WP_ALLOW_MULTISITE') && WP_ALLOW_MULTISITE )
 		$submenu['tools.php'][50] = array(__('Network Setup'), 'manage_options', 'network.php');
+}
+//===屏蔽 小工具end===
+
 
 $menu[80] = array( __('Settings'), 'manage_options', 'options-general.php', '', 'menu-top menu-icon-settings', 'menu-settings', 'dashicons-admin-settings' );
 	$submenu['options-general.php'][10] = array(_x('General', 'settings screen'), 'manage_options', 'options-general.php');
