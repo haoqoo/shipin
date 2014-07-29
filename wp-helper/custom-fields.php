@@ -38,7 +38,12 @@
             //echo'<h4>'.$meta_box['title'].'</h4>';      
             // 自定义字段输入框      
             //echo '<textarea cols="60" rows="3" name="'.$meta_box['name'].'_value">'.$meta_box_value.'</textarea><br />';    
-            echo '<input style="width:500px;" name="'.$meta_box['name'].'_value" value="'.$meta_box_value.'">';  
+            if ('视频地址'==$meta_box_value) {
+                echo '<input style="width:500px;" name="'.$meta_box['name'].'_value" placeholder="'.$meta_box_value.'">';  
+            }else{
+                echo '<input style="width:500px;" name="'.$meta_box['name'].'_value" value="'.$meta_box_value.'">';  
+            }
+            
         }      
     }
 
