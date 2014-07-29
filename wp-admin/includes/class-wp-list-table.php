@@ -332,7 +332,7 @@ class WP_List_Table {
 
 		if ( isset( $_REQUEST['action2'] ) && -1 != $_REQUEST['action2'] )
 			return $_REQUEST['action2'];
-
+		//echo 'return false';
 		return false;
 	}
 

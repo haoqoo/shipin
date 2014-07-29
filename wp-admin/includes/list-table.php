@@ -48,7 +48,8 @@ function _get_list_table( $class, $args = array() ) {
 		else
 			$args['screen'] = null;
 
-		return new $class( $args );
+		//这里初始化class如WP_Posts_List_Table
+		return new $class( $args ); 
 	}
 
 	return false;

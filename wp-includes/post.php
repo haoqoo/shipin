@@ -1077,7 +1077,6 @@ function get_post_type_object( $post_type ) {
 
 	if ( empty($wp_post_types[$post_type]) )
 		return null;
-
 	return $wp_post_types[$post_type];
 }
 
@@ -1230,6 +1229,7 @@ function register_post_type( $post_type, $args = array() ) {
 		'_edit_link'           => 'post.php?post=%d',
 	);
 	$args = wp_parse_args( $args, $defaults );
+	
 	$args = (object) $args;
 
 	$post_type = sanitize_key( $post_type );

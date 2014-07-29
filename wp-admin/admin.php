@@ -236,8 +236,9 @@ if ( isset($plugin_page) ) {
 		 */
 		do_action( 'load-' . $plugin_page );
 
-		if ( !isset($_GET['noheader']))
+		if ( !isset($_GET['noheader'])){
 			require_once(ABSPATH . 'wp-admin/admin-header.php');
+		}
 
 		if ( file_exists(WPMU_PLUGIN_DIR . "/$plugin_page") )
 			include(WPMU_PLUGIN_DIR . "/$plugin_page");

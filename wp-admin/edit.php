@@ -15,6 +15,7 @@ if ( ! $typenow )
 $post_type = $typenow;
 $post_type_object = get_post_type_object( $post_type );
 
+
 if ( ! $post_type_object )
 	wp_die( __( 'Invalid post type' ) );
 
@@ -31,7 +32,7 @@ foreach ( array( 'p', 'attachment_id', 'page_id' ) as $_redirect ) {
 		exit;
 	}
 }
-unset( $_redirect );
+unset( $_redirect );//释放变量内存？
 
 if ( 'post' != $post_type ) {
 	$parent_file = "edit.php?post_type=$post_type";
@@ -44,6 +45,7 @@ if ( 'post' != $post_type ) {
 }
 
 $doaction = $wp_list_table->current_action();
+echo 'doaction:'.$doaction.'<br>';
 
 if ( $doaction ) {
 	check_admin_referer('bulk-posts');
