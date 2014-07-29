@@ -982,6 +982,7 @@ function do_meta_boxes( $screen, $context, $object ) {
 						echo '<div class="handlediv" title="' . esc_attr__('Click to toggle') . '"><br /></div>';
 					echo "<h3 class='hndle'><span>{$box['title']}</span></h3>\n";
 					echo '<div class="inside">' . "\n";
+					echo $box['callback'] . "\n";
 					call_user_func($box['callback'], $object, $box);
 					echo "</div>\n";
 					echo "</div>\n";

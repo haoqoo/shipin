@@ -282,7 +282,8 @@ function wp_dashboard_right_now() {
 	?>
 	</ul>
 	<?php
-	update_right_now_message();
+	//WordPress是否有更新和插件信息。
+	//update_right_now_message();
 
 	// Check if search engines are asked not to index this site.
 	if ( ! is_network_admin() && ! is_user_admin() && current_user_can( 'manage_options' ) && '1' != get_option( 'blog_public' ) ) {
