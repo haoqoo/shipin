@@ -73,6 +73,8 @@ function get_locale() {
 function translate( $text, $domain = 'default' ) {
 	$translations = get_translations_for_domain( $domain );
 	$translations = $translations->translate( $text );
+
+
 	/**
 	 * Filter text with its translation.
 	 *
@@ -674,7 +676,9 @@ function load_child_theme_textdomain( $domain, $path = false ) {
  */
 function get_translations_for_domain( $domain ) {
 	global $l10n;
+	//print_r($l10n[$domain]);
 	if ( !isset( $l10n[$domain] ) ) {
+		//echo 'new NOOP_Translations';
 		$l10n[$domain] = new NOOP_Translations;
 	}
 	return $l10n[$domain];

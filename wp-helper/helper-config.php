@@ -23,10 +23,22 @@
 	add_action('admin_menu','wp_hide_notices');
 
 	//屏蔽admin-header 一些无用的功能
-	function wp_admin_header(){
-		
+	function annointed_admin_bar_remove() {
+    	global $wp_admin_bar;
+    	$wp_admin_bar->remove_menu('wp-logo');
 	}
+	add_action('wp_before_admin_bar_render', 'annointed_admin_bar_remove', 0);
 
+	function wp_admin_header(){
+		remove_action( 'admin_bar_menu', 'wp_admin_bar_wp_menu', 10 );
+		remove_action( 'admin_bar_menu', 'wp_admin_bar_my_sites_menu', 20 );
+		remove_action( 'admin_bar_menu', 'wp_admin_bar_updates_menu', 40 );
+		if ( ! is_network_admin() && ! is_user_admin() ) {
+			//评论
+			remove_action( 'admin_bar_menu', 'wp_admin_bar_comments_menu', 60 );
+		}
+	}
+	add_action('admin_bar_menu','wp_admin_header');
 
 	require('custom-fields.php');
 
