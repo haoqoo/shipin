@@ -546,10 +546,10 @@ function do_action_ref_array($tag, $args) {
 	do {
 		foreach( (array) current($wp_filter[$tag]) as $the_ )
 			if ( !is_null($the_['function']) ){
-				if($tag=='admin_bar_menu'){
-					echo $the_['function'] .':';
-					print_r( array_slice($args, 0, (int) $the_['accepted_args']) . '<br>');
-				}
+				// if($tag=='admin_bar_menu'){
+				// 	echo $the_['function'] .':';
+				// 	print_r( array_slice($args, 0, (int) $the_['accepted_args']) . '<br>');
+				// }
 				call_user_func_array($the_['function'], array_slice($args, 0, (int) $the_['accepted_args']));
 			}
 
