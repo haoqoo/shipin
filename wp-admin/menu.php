@@ -26,10 +26,10 @@ $menu[2] = array( __('Dashboard'), 'read', 'index.php', '', 'menu-top menu-top-f
 
 //print_r($menu[2]);
 //echo '<br>';
-$submenu[ 'index.php' ][0] = array( __('Home'), 'read', 'index.php' );
+//$submenu[ 'index.php' ][0] = array( __('Home'), 'read', 'index.php' );
 //print_r($submenu[ 'index.php' ][0]);
 if ( is_multisite() ) {
-	$submenu[ 'index.php' ][5] = array( __('My Sites'), 'read', 'my-sites.php' );
+	//$submenu[ 'index.php' ][5] = array( __('My Sites'), 'read', 'my-sites.php' );
 }
 
 //===检查框架，插件，主题  更新。 屏蔽===
@@ -52,7 +52,7 @@ if (HIDDEN-UPDATE){
 //===检查框架，插件，主题  更新。 屏蔽end===
 
 
-$menu[4] = array( '', 'read', 'separator1', '', 'wp-menu-separator' );
+//$menu[4] = array( '', 'read', 'separator1', '', 'wp-menu-separator' );
 
 //文章
 $menu[5] = array( __('Posts'), 'edit_posts', 'edit.php', '', 'open-if-no-js menu-top menu-icon-post', 'menu-posts', 'dashicons-admin-post' );
