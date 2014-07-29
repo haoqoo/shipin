@@ -6,10 +6,15 @@
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <div class="c-top2" id="post-55">
                 <div class="datetime"><?php the_time('Y') ?><br /><?php the_time('m-d') ?></div>
-					<header class="tit"><h1 class="entry-title"><?php the_title(); ?></h1>
+					<header class="tit" style="position:relative;"><h1 class="entry-title"><?php the_title(); ?></h1>
 					<aside class="entry-meta iititle2">
                         <span><i class="icon-user icon-large"></i> <?php the_author_posts_link(); ?></span><?php printf( __( '<span><i class="icon-folder-open icon-large"></i> %2$s</span>', 'frontopen' ), 'i1', get_the_category_list( ', ' ) ); ?><span><i class="icon-eye-open icon-large"></i> 围观<i id="number"><?php echo getPostViews(get_the_ID());if($_SERVER["QUERY_STRING"])setPostViews(get_the_ID())?></i><script type="text/javascript">jQuery(function($){$.get("<?php bloginfo('url')?>/fo_ajax?ajax=getPostViews&postID=<?php echo get_the_ID()?>",function(data){if(data.length < 10)$('#number').text(data)});})</script>次</span><span><i class="icon-comment-alt icon-large"></i> <?php comments_popup_link( __( 'Leave a comment', 'frontopen' ), __( '1 Comment', 'frontopen' ), __( '% Comments', 'frontopen' ) ); ?></span><span><i class="icon-pencil icon-large"></i> 编辑日期：<time><?php the_modified_time('Y-m-d')?></time></span><span><i class="icon-zoom-in icon-large"></i> 字体：<a href="javascript:;" onclick="checkFontSize(18)">大</a> <a href="javascript:;" onclick="checkFontSize(16)">中</a> <a href="javascript:;" onclick="checkFontSize(14)">小</a></span><?php if(function_exists('the_views')) { the_views(); } ?>
+						<span><i class="icon-user icon-large"></i>评分: <?php echo get_post_meta(get_the_ID(), "like", $single = true); ?></span>						
 					</aside>
+					<div style="position:absolute;top:1px;right:1px;">
+						<span><a href="<?php echo bloginfo('url').'/wp-helper/score.php?oper=like&postID='.get_the_ID(); ?>">喜欢</a></span>
+						<span style="margin-left:10px;"><a href="<?php echo bloginfo('url').'/wp-helper/score.php?oper=nolike&postID='.get_the_ID(); ?>">不喜欢</a></span>
+					</div>
                     </header>
                     <div class="cls"></div>
 		    </div>
@@ -20,8 +25,7 @@
 						<div class="ad_1">
 						<?php echo get_option('themes_fo2_ad_1') ?>
                         </div>
-					<?php }?>
-
+					<?php }?>						
 						<?php the_content(); ?> 
  					<?php wp_link_pages(array('before' => '<div class="page-link">', 'after' => '', 'next_or_number' => 'next', 'previouspagelink' => '<span>上一页</span>', 'nextpagelink' => "")); ?><?php wp_link_pages(array('before' => '', 'after' => '', 'next_or_number' => 'number', 'link_before' =>'<span>', 'link_after'=>'</span>')); ?>
 					<?php wp_link_pages(array('before' => '', 'after' => '<div class="cls"></div></div>', 'next_or_number' => 'next', 'previouspagelink' => '', 'nextpagelink' => "<span>下一页</span>")); ?>

@@ -12,4 +12,6 @@
 	//隐藏工具
 	define('HIDDEN-TOOL', true);
 
+	require('custom-fields.php');
+
  ?>

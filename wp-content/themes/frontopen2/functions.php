@@ -1519,6 +1519,9 @@ function select_postmeta_key($key,$value){
 	return $object_id;
 }
 
+	//调用自定义的函数，在wp-helper目录的custom-fields.php文件中
+	register_field();
+
 //自定义PHP页面加载调用wordpress的API函数(仅限固定链接下使用)
 function loadCustomTemplate($template) {
     global $wp_query;
@@ -1543,9 +1546,11 @@ function loadCustomTemplate($template) {
  
 function templateRedirect() {
     $basename = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
-    loadCustomTemplate(TEMPLATEPATH.'/custom/'."/$basename.php");
+    loadCustomTemplate(TEMPLATEPATH.'/custom/'."$basename.php");
 }
   
 add_action('template_redirect', 'templateRedirect');
+	
+
 
 ?>
