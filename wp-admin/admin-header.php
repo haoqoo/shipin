@@ -10,6 +10,7 @@
 if ( ! defined( 'WP_ADMIN' ) )
 	require_once( dirname( __FILE__ ) . '/admin.php' );
 
+
 // In case admin-header.php is included in a function.
 global $title, $hook_suffix, $current_screen, $wp_locale, $pagenow, $wp_version,
 	$update_title, $total_update_count, $parent_file;
@@ -28,10 +29,11 @@ elseif ( is_user_admin() )
 else
 	$admin_title = get_bloginfo( 'name' );
 
+//去掉wordpress
 if ( $admin_title == $title )
-	$admin_title = sprintf( __( '%1$s &#8212; 后台管理' ), $title );
+	$admin_title = sprintf( __( '%1$s' ), $title );
 else
-	$admin_title = sprintf( __( '%1$s &lsaquo; %2$s &#8212; 后台管理' ), $title, $admin_title );
+	$admin_title = sprintf( __( '%1$s &lsaquo; %2$s ' ), $title, $admin_title );
 
 /**
  * Filter the <title> content for an admin page.
@@ -192,6 +194,7 @@ if ( current_user_can( 'edit_theme_options' ) )
  *
  * @since 3.0.0
  */
+//这里是渲染admin-header
 do_action( 'in_admin_header' );
 ?>
 
@@ -237,6 +240,6 @@ if ( is_network_admin() ) {
  * @since 3.1.0
  */
 do_action( 'all_admin_notices' );
-
+//echo "parent_file:".$parent_file;
 if ( $parent_file == 'options-general.php' )
 	require(ABSPATH . 'wp-admin/options-head.php');

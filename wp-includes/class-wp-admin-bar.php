@@ -494,14 +494,18 @@ class WP_Admin_Bar {
 
 		// Site related.
 		add_action( 'admin_bar_menu', 'wp_admin_bar_sidebar_toggle', 0 );
-		add_action( 'admin_bar_menu', 'wp_admin_bar_wp_menu', 10 );
+		//wordpress 官网
+		//add_action( 'admin_bar_menu', 'wp_admin_bar_wp_menu', 10 );
 		add_action( 'admin_bar_menu', 'wp_admin_bar_my_sites_menu', 20 );
+		//前台首页
 		add_action( 'admin_bar_menu', 'wp_admin_bar_site_menu', 30 );
-		add_action( 'admin_bar_menu', 'wp_admin_bar_updates_menu', 40 );
+		//更新提示
+		//add_action( 'admin_bar_menu', 'wp_admin_bar_updates_menu', 40 );
 
 		// Content related.
 		if ( ! is_network_admin() && ! is_user_admin() ) {
-			add_action( 'admin_bar_menu', 'wp_admin_bar_comments_menu', 60 );
+			//评论
+			//add_action( 'admin_bar_menu', 'wp_admin_bar_comments_menu', 60 );
 			add_action( 'admin_bar_menu', 'wp_admin_bar_new_content_menu', 70 );
 		}
 		add_action( 'admin_bar_menu', 'wp_admin_bar_edit_menu', 80 );

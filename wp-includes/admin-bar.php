@@ -74,6 +74,9 @@ function wp_admin_bar_render() {
 	 *
 	 * @param WP_Admin_Bar $wp_admin_bar WP_Admin_Bar instance, passed by reference
 	 */
+	//这里具体render admin-header bar  
+	//$wp_admin_bar  在哪里初始化？ 
+	//print_r(array( &$wp_admin_bar ));
 	do_action_ref_array( 'admin_bar_menu', array( &$wp_admin_bar ) );
 
 	/**
