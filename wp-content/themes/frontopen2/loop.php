@@ -78,6 +78,11 @@ intval(get_option('themes_fo2_image_height')) ? $imgH = intval(get_option('theme
 		wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'frontopen' ), 'after' => '</div>' ) );
 		if(!get_option('themes_fo2_dis_href')){?>
         </a><?php }?>
+
+        <!-----自定义功能代码---->
+        <div style="position:absolute;bottom:25px;width:100%"><center><a href="<?php echo get_post_meta(get_the_ID(), "vlink_value", $single = true); ?>" style="color:#FF6100;">播放</a></center></div>
+
+
 <a href="<?php the_permalink(); ?>" class="more-link"><?php if(get_option('themes_fo2_readmore')){echo get_option('themes_fo2_readmore');}else{echo "Read More >";}?></a><div class="cls"></div>
     </div>
     <div class="c-bot">

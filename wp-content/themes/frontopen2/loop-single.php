@@ -12,8 +12,8 @@
 						<span><i class="icon-user icon-large"></i>评分: <?php echo get_post_meta(get_the_ID(), "like", $single = true); ?></span>						
 					</aside>
 					<div style="position:absolute;top:1px;right:1px;">
-						<span><a href="<?php echo bloginfo('url').'/wp-helper/score.php?oper=like&postID='.get_the_ID(); ?>">喜欢</a></span>
-						<span style="margin-left:10px;"><a href="<?php echo bloginfo('url').'/wp-helper/score.php?oper=nolike&postID='.get_the_ID(); ?>">不喜欢</a></span>
+						<span><img src="<?php echo bloginfo('url').'/wp-helper/images/like.png';?>" /><a href="<?php echo bloginfo('url').'/wp-helper/score.php?oper=like&postID='.get_the_ID(); ?>">喜欢</a></span>
+						<span style="margin-left:10px;"><img style="vertical-align:middle;" src="<?php echo bloginfo('url').'/wp-helper/images/nolike.png';?>" /><a href="<?php echo bloginfo('url').'/wp-helper/score.php?oper=nolike&postID='.get_the_ID(); ?>">不喜欢</a></span>
 					</div>
                     </header>
                     <div class="cls"></div>
