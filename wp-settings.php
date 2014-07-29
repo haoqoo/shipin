@@ -24,8 +24,6 @@ define('WPHELPER','wp-helper');
 require( ABSPATH . WPINC . '/load.php' );
 require( ABSPATH . WPINC . '/default-constants.php' );
 
-//加载 辅助设置
-require(ABSPATH . WPHELPER . '/helper-config.php');
 
 /*
  * These can't be directly globalized in version.php. When updating,
@@ -82,8 +80,7 @@ require( ABSPATH . WPINC . '/class-wp-error.php' );
 require( ABSPATH . WPINC . '/plugin.php' );
 require( ABSPATH . WPINC . '/pomo/mo.php' );
 
-//加载去掉google fonts的小玩意。
-require( ABSPATH . WPHELPER . '/disable-google-fonts.php' );
+
 
 // Include the wpdb class and, if present, a db.php database drop-in.
 require_wp_db();
@@ -235,6 +232,12 @@ wp_set_internal_encoding();
 // Run wp_cache_postload() if object cache is enabled and the function exists.
 if ( WP_CACHE && function_exists( 'wp_cache_postload' ) )
 	wp_cache_postload();
+
+
+//加载去掉google fonts的小玩意。
+require( ABSPATH . WPHELPER . '/disable-google-fonts.php' );
+//加载 辅助设置
+require(ABSPATH . WPHELPER . '/helper-config.php');
 
 /**
  * Fires once activated plugins have loaded.

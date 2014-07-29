@@ -759,7 +759,7 @@ final class WP_Screen {
 	 * @param string $content Sidebar content in plain text or HTML.
 	 */
 	public function set_help_sidebar( $content ) {
-		$this->_help_sidebar = $content;
+		//$this->_help_sidebar = $content;
 	}
 
 	/**

@@ -14,4 +14,17 @@
 	//隐藏外观
 	//define('HIDDEN-');
 
+
+	//屏蔽后台更新模块 
+	function wp_hide_notices() {
+    	remove_action( 'admin_notices', 'update_nag', 3 );
+	}
+	add_action('admin_menu','wp_hide_notices');
+
+	//屏蔽admin-header 一些无用的功能
+	function wp_admin_header(){
+		
+	}
+
+
  ?>
