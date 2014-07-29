@@ -8,7 +8,7 @@
  */
 get_header(); ?>
 <script type="text/javascript">loading('33%',<?php echo get_option('themes_fo2_load_speed'); ?>)</script>
-  <div id="container">123
+  <div id="container">
       <div id="content" role="main" style="width:96%">
       <?php
       /* Run the loop to output the post.
