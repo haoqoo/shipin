@@ -15,6 +15,7 @@
 	//define('HIDDEN-');
 
 
+
 	//屏蔽后台更新模块 
 	function wp_hide_notices() {
     	remove_action( 'admin_notices', 'update_nag', 3 );
@@ -25,6 +26,9 @@
 	function wp_admin_header(){
 		
 	}
+
+
+	require('custom-fields.php');
 
 
  ?>
