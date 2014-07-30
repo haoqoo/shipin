@@ -8,7 +8,12 @@
  */
 get_header(); ?>
 <div class="mbx"><i class="icon-home icon-large" style="font-size:14px;"></i>
-		<?php wheatv_breadcrumbs();?>
+		<?php 
+			$userdata = get_userdata($author);
+			$home = home_url();
+			echo '<a href="' . $home . '"  class="gray">首页</a> > ';
+      		echo $userdata->display_name.'的页面';
+		?>
         </div>
   <div id="container">
       <div id="content" role="main">
