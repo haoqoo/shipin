@@ -9,6 +9,7 @@ if ( defined('WP_USE_THEMES') && WP_USE_THEMES )
 	 *
 	 * @since 1.5.0
 	 */
+	//debug_logger('used themes');
 	do_action( 'template_redirect' );
 
 /**
@@ -71,7 +72,7 @@ if ( defined('WP_USE_THEMES') && WP_USE_THEMES ) :
 	 * @param string $template The path of the template to include.
 	 */
 	if ( $template = apply_filters( 'template_include', $template ) )
-		if(DEBUG_LOG){echo 'template'.$template.'<br>';}
+//		if(DEBUG_LOG){echo 'template'.$template.'<br>';}
 		
 		include( $template );
 	return;

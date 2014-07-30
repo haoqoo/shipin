@@ -1197,8 +1197,8 @@ function frontopen_admin_menu()
 	add_menu_page('FO主题控制台', 'FO控制台', 'administrator', 'theme_config' ,'themeoptions_page', '' . get_bloginfo('template_url') .'/images/fo_tm.png', 59);
     add_submenu_page('theme_config','头部导航按钮设置','导航按钮','administrator','themes_btn','themeoptions_page_btn');
     add_submenu_page('theme_config','站点公告设置','站点公告','administrator','themes_ac','themeoptions_page_ac');
-    add_submenu_page('theme_config','主题调色板','调色板','administrator','themes_color','themeoptions_page_color');
-	add_submenu_page('theme_config','FO主题更新工具','主题更新','administrator','themes_get','themeoptions_page_get');
+    //add_submenu_page('theme_config','主题调色板','调色板','administrator','themes_color','themeoptions_page_color');
+	//add_submenu_page('theme_config','FO主题更新工具','主题更新','administrator','themes_get','themeoptions_page_get');
 }
 
 //载入公告设置页面函数
@@ -1545,7 +1545,9 @@ function loadCustomTemplate($template) {
 }
  
 function templateRedirect() {
+	//debug_logger($_SERVER['REQUEST_URI']);
     $basename = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);
+    //debug_logger(TEMPLATEPATH.'/custom/'."$basename.php");
     loadCustomTemplate(TEMPLATEPATH.'/custom/'."$basename.php");
 }
   

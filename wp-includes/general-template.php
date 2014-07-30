@@ -106,6 +106,7 @@ function get_footer( $name = null ) {
  * @param string $name The name of the specialised sidebar.
  */
 function get_sidebar( $name = null ) {
+	
 	/**
 	 * Fires before the sidebar template file is loaded.
 	 *
@@ -120,12 +121,15 @@ function get_sidebar( $name = null ) {
 	 */
 	do_action( 'get_sidebar', $name );
 
+	
 	$templates = array();
 	$name = (string) $name;
 	if ( '' !== $name )
 		$templates[] = "sidebar-{$name}.php";
 
 	$templates[] = 'sidebar.php';
+
+	
 
 	// Backward compat code will be removed in a future release
 	if ('' == locate_template($templates, true))

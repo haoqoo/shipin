@@ -234,10 +234,8 @@ if ( WP_CACHE && function_exists( 'wp_cache_postload' ) )
 	wp_cache_postload();
 
 
-//加载去掉google fonts的小玩意。
-require( ABSPATH . WPHELPER . '/disable-google-fonts.php' );
 //加载 辅助设置
-require(ABSPATH . WPHELPER . '/helper-config.php');
+require_once(ABSPATH . WPHELPER . '/helper-config.php');
 
 /**
  * Fires once activated plugins have loaded.
@@ -335,6 +333,7 @@ $GLOBALS['wp_locale'] = new WP_Locale();
 
 // Load the functions for the active theme, for both parent and child theme if applicable.
 if ( ! defined( 'WP_INSTALLING' ) || 'wp-activate.php' === $pagenow ) {
+	
 	if ( TEMPLATEPATH !== STYLESHEETPATH && file_exists( STYLESHEETPATH . '/functions.php' ) )
 		include( STYLESHEETPATH . '/functions.php' );
 	if ( file_exists( TEMPLATEPATH . '/functions.php' ) )

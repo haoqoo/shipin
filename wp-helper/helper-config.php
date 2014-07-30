@@ -16,7 +16,16 @@
 
 	//打印
 	define('DEBUG_LOG', true);
+	function debug_logger($msg){
+		if(DEBUG_LOG && $msg!==''){
+			echo $msg.'<br>';
+		}
+	}
 
+	//屏蔽后台左侧菜单
+	// function _menu_hide_(){
+	// 	global $menu,$submenu;
+	// }
 
 
 	//屏蔽后台更新模块 
@@ -26,22 +35,26 @@
 	add_action('admin_menu','wp_hide_notices');
 
 	//屏蔽admin-header 一些无用的功能
-	function annointed_admin_bar_remove() {
+	function annointed_admin_bar_remove() {//屏蔽wordpress官网
     	global $wp_admin_bar;
     	$wp_admin_bar->remove_menu('wp-logo');
 	}
 	add_action('wp_before_admin_bar_render', 'annointed_admin_bar_remove', 0);
 
 	function wp_admin_header(){
+		//屏蔽 更新提醒
 		remove_action( 'admin_bar_menu', 'wp_admin_bar_updates_menu', 40 );
 		if ( ! is_network_admin() && ! is_user_admin() ) {
-			//评论
+			//屏蔽 评论
 			remove_action( 'admin_bar_menu', 'wp_admin_bar_comments_menu', 60 );
 		}
 	}
 	add_action('admin_bar_menu','wp_admin_header');
 
-	require('custom-fields.php');
+	//remove goole 字体。
+	require_once('disable-google-fonts.php');
+
+	require_once('custom-fields.php');
 
 
  ?>
