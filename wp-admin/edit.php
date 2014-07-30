@@ -45,7 +45,6 @@ if ( 'post' != $post_type ) {
 }
 
 $doaction = $wp_list_table->current_action();
-echo 'doaction:'.$doaction.'<br>';
 
 if ( $doaction ) {
 	check_admin_referer('bulk-posts');

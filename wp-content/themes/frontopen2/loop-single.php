@@ -29,9 +29,9 @@
 						<?php the_content(); ?> 
  					<?php wp_link_pages(array('before' => '<div class="page-link">', 'after' => '', 'next_or_number' => 'next', 'previouspagelink' => '<span>上一页</span>', 'nextpagelink' => "")); ?><?php wp_link_pages(array('before' => '', 'after' => '', 'next_or_number' => 'number', 'link_before' =>'<span>', 'link_after'=>'</span>')); ?>
 					<?php wp_link_pages(array('before' => '', 'after' => '<div class="cls"></div></div>', 'next_or_number' => 'next', 'previouspagelink' => '', 'nextpagelink' => "<span>下一页</span>")); ?>
-                        <div class="loc_link"><ul><li>本文固定链接: <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php echo urldecode(get_permalink()) ?></a></li>
+<!--                         <div class="loc_link"><ul><li>本文固定链接: <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php echo urldecode(get_permalink()) ?></a></li>
                         <li>转载请注明: <?php if(get_option('themes_fo2_zhuanzai')){echo get_option('themes_fo2_zhuanzai');}else{ ?><?php the_author_posts_link(); ?> <time><?php the_time('Y年m月d日')?> </time>于 <a href="<?php echo home_url(); ?>/" title="访问<?php bloginfo('name');?>"><?php bloginfo('name');?></a> 发表<?php }?></li></ul>
-                        </div>
+                        </div> -->
                         <?php if(get_option('themes_fo2_fenxiang')){?>
 							<div style="margin-top:10px">
 							<?php echo get_option('themes_fo2_fenxiang');?>
