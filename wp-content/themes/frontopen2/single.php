@@ -20,7 +20,7 @@ get_header(); ?>
       </div><!-- #content -->
   </div><!-- #container -->
 <script type="text/javascript">loading('55%',<?php echo get_option('themes_fo2_load_speed'); ?>)</script>
-<?php get_sidebar('adv'); ?>
+<?php get_sidebar(); ?>
 <script type="text/javascript">loading('78%',<?php echo get_option('themes_fo2_load_speed'); ?>)</script>
 <?php get_footer(); ?>
 <script type="text/javascript">loading('100%',<?php echo get_option('themes_fo2_load_speed'); ?>)</script>
