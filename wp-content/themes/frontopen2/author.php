@@ -7,6 +7,9 @@
  * @since Front Open 1.0
  */
 get_header(); ?>
+<div class="mbx"><i class="icon-home icon-large" style="font-size:14px;"></i>
+		<?php wheatv_breadcrumbs();?>
+        </div>
   <div id="container">
       <div id="content" role="main">
 
@@ -22,7 +25,7 @@ if ( have_posts() )
   the_post();
 ?>
 
-          <h1 class="page-title author"><?php the_author()?> 的 站内主页</h1>
+          <!-- <h1 class="page-title author"><?php the_author()?> 的 站内主页</h1> -->
 
 <?php
 /* Since we called the_post() above, we need to
@@ -58,7 +61,7 @@ endif;
 <?php if($curauth->qq){ ?><p><b>QQ：</b><?php echo $curauth->qq; ?></p><?php } ?>
 <?php if($curauth->description){ ?><p><b>个人简介：</b><?php echo $curauth->description; ?></p><?php } ?>
 </div>
-<!-- Duoshuo Comment BEGIN -->
+<!-- Duoshuo Comment BEGIN 
 <div class="ds-thread" data-thread-key="author<?php the_author_meta('ID') ?>" data-title="<?php the_author()?> 在<?php bloginfo('name');?>中的主页" ></div>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"<?php echo $_SERVER['HTTP_HOST']?>"};
@@ -70,7 +73,7 @@ var duoshuoQuery = {short_name:"<?php echo $_SERVER['HTTP_HOST']?>"};
 		(document.getElementsByTagName('head')[0] 
 		|| document.getElementsByTagName('body')[0]).appendChild(ds);
 	})();
-	</script>
+	</script>-->
 <!-- Duoshuo Comment END -->
 </div>
 <?php get_footer(); ?>

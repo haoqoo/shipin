@@ -486,6 +486,7 @@ function wheatv_breadcrumbs() {
  
     } elseif ( is_author() ) {
        global $author;
+       
       $userdata = get_userdata($author);
       echo '由'.$userdata->display_name.'发表';
  
