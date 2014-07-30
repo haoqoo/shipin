@@ -6,13 +6,16 @@
 
 	// ** 后台左侧菜单 ** //
 	//隐藏更新count
-	define('HIDDEN-UPDATE', true);	
+	define('HIDDEN_UPDATE', true);	
 	//隐藏插件
-	define('HIDDEN-PLUGIN', true);
+	define('HIDDEN_PLUGIN', true);
 	//隐藏工具
-	define('HIDDEN-TOOL', true);
+	define('HIDDEN_TOOL', true);
 	//隐藏外观
 	//define('HIDDEN-');
+
+	//打印
+	define('DEBUG_LOG', true);
 
 
 

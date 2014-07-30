@@ -33,7 +33,7 @@ if ( is_multisite() ) {
 }
 
 //===检查框架，插件，主题  更新。 屏蔽===
-if (HIDDEN-UPDATE){
+if (!HIDDEN_UPDATE){
 	if ( ! is_multisite() || is_super_admin() )
 		$update_data = wp_get_update_data();
 
@@ -171,7 +171,7 @@ function _add_themes_utility_last() {
 }
 
 //===检查框架，插件，主题  更新。 屏蔽===
-if (HIDDEN-PLUGIN) {
+if (!HIDDEN_PLUGIN) {
 	$count = '';
 	if ( ! is_multisite() && current_user_can( 'update_plugins' ) ) {
 		if ( ! isset( $update_data ) )
@@ -218,7 +218,7 @@ if ( current_user_can('list_users') ) {
 }
 
 //=== 屏蔽 小工具===
-if (HIDDEN-TOOL) {
+if (!HIDDEN_TOOL) {
 	$menu[75] = array( __('Tools'), 'edit_posts', 'tools.php', '', 'menu-top menu-icon-tools', 'menu-tools', 'dashicons-admin-tools' );
 	$submenu['tools.php'][5] = array( __('Available Tools'), 'edit_posts', 'tools.php' );
 	$submenu['tools.php'][10] = array( __('Import'), 'import', 'import.php' );
