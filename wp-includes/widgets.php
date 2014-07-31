@@ -968,9 +968,11 @@ function dynamic_sidebar($index = 1) {
 			}
 		}
 	}
+	debug_logger($index);
 
 	$sidebars_widgets = wp_get_sidebars_widgets();
 	if ( empty( $wp_registered_sidebars[ $index ] ) || empty( $sidebars_widgets[ $index ] ) || ! is_array( $sidebars_widgets[ $index ] ) ) {
+		debug_logger('未找'.$index);
 		/** This action is documented in wp-includes/widgets.php */
 		do_action( 'dynamic_sidebar_before', $index, false );
 		/** This action is documented in wp-includes/widgets.php */
@@ -978,6 +980,8 @@ function dynamic_sidebar($index = 1) {
 		/** This filter is documented in wp-includes/widgets.php */
 		return apply_filters( 'dynamic_sidebar_has_widgets', false, $index );
 	}
+
+	debug_logger('找到'.$index);
 
 	/**
 	 * Fires before widgets are rendered in a dynamic sidebar.
