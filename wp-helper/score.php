@@ -8,7 +8,7 @@ if($oper == "like"){
 }else{
 	$score -= 1;
 }
-if($score >= 1 && $score <= 7){
+if($score >= 0){
 	update_post_meta($_GET['postID'], "like", $score);  	
 }
 ?>
