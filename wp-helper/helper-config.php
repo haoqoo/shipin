@@ -8,7 +8,7 @@
 	//隐藏更新count
 	define('HIDDEN_UPDATE', true);	
 	//隐藏插件
-	define('HIDDEN_PLUGIN', true);
+	define('HIDDEN_PLUGIN', false);
 	//隐藏工具
 	define('HIDDEN_TOOL', true);
 	//隐藏外观
