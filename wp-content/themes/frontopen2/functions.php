@@ -1353,8 +1353,9 @@ add_action('get_header','zg_lwp_header');
 
 
 //为文章添加字段
-add_action( 'add_meta_boxes', 'fo_add_custom_box' );
-add_action( 'save_post', 'fo_save_postdata' );
+//在这个项目没用
+//add_action( 'add_meta_boxes', 'fo_add_custom_box' );
+//add_action( 'save_post', 'fo_save_postdata' );
 
 function fo_add_custom_box() {
   add_meta_box(

@@ -973,6 +973,7 @@ function dynamic_sidebar($index = 1) {
 	$sidebars_widgets = wp_get_sidebars_widgets();
 	if ( empty( $wp_registered_sidebars[ $index ] ) || empty( $sidebars_widgets[ $index ] ) || ! is_array( $sidebars_widgets[ $index ] ) ) {
 		debug_logger('未找'.$index);
+		//未自定义widget时，应该是加载默认的
 		/** This action is documented in wp-includes/widgets.php */
 		do_action( 'dynamic_sidebar_before', $index, false );
 		/** This action is documented in wp-includes/widgets.php */
@@ -997,6 +998,7 @@ function dynamic_sidebar($index = 1) {
 	 */
 	do_action( 'dynamic_sidebar_before', $index, true );
 	$sidebar = $wp_registered_sidebars[$index];
+	print_r($sidebar);
 
 	$did_one = false;
 	foreach ( (array) $sidebars_widgets[$index] as $id ) {
