@@ -968,11 +968,11 @@ function dynamic_sidebar($index = 1) {
 			}
 		}
 	}
-	debug_logger($index);
+	//debug_logger($index);
 
 	$sidebars_widgets = wp_get_sidebars_widgets();
 	if ( empty( $wp_registered_sidebars[ $index ] ) || empty( $sidebars_widgets[ $index ] ) || ! is_array( $sidebars_widgets[ $index ] ) ) {
-		debug_logger('未找'.$index);
+		//debug_logger('未找'.$index);
 		//未自定义widget时，应该是加载默认的
 		/** This action is documented in wp-includes/widgets.php */
 		do_action( 'dynamic_sidebar_before', $index, false );
@@ -982,7 +982,7 @@ function dynamic_sidebar($index = 1) {
 		return apply_filters( 'dynamic_sidebar_has_widgets', false, $index );
 	}
 
-	debug_logger('找到'.$index);
+	//debug_logger('找到'.$index);
 
 	/**
 	 * Fires before widgets are rendered in a dynamic sidebar.
@@ -997,8 +997,10 @@ function dynamic_sidebar($index = 1) {
 	 *                                Default true.
 	 */
 	do_action( 'dynamic_sidebar_before', $index, true );
-	$sidebar = $wp_registered_sidebars[$index];
-	print_r($sidebar);
+
+
+	$sidebar = $wp_registered_sidebars[$index];//获取已定义的widget
+	//print_r($sidebar);
 
 	$did_one = false;
 	foreach ( (array) $sidebars_widgets[$index] as $id ) {
