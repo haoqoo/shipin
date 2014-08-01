@@ -55,7 +55,10 @@
 	//添加dynamic_sidebar_after hook，广告
 	add_action('dynamic_sidebar_after','ad_sidebar');
 	function ad_sidebar($arg){
-		echo '这是一个广告钩子:'.$arg;
+		if(is_home()){
+			//echo '这是一个广告钩子:'.$arg;	
+		}
+		//echo '这是一个广告钩子:'.$arg;
 	}
 
 	//remove goole 字体。
