@@ -4,8 +4,9 @@ if(get_option('themes_fo2_dis_num')){
 	$dis_num = get_option('themes_fo2_dis_num');
 	}
 	else{
-		$dis_num = 150;
+		$dis_num = 250;
 	};
+
 	
 //缩略图高宽
 if(get_option('themes_fo2_image_width')){$imgW = intval(get_option('themes_fo2_image_width'));}else{if(!get_option('themes_fo2_TimThumb')){$imgW = 205;}else{$imgW = 'auto';}};
@@ -43,6 +44,7 @@ intval(get_option('themes_fo2_image_height')) ? $imgH = intval(get_option('theme
 ?>
 <?php
   global $query_string;
+  //debug_logger('query_string:'.$query_string);
   query_posts( $query_string . '&ignore_sticky_posts=1' );
 ?>
 
@@ -64,6 +66,7 @@ intval(get_option('themes_fo2_image_height')) ? $imgH = intval(get_option('theme
     <?php if(!get_option('themes_fo2_dis_href')){?><a href="<?php the_permalink(); ?>" class="disp_a" rel="bookmark" title="<?php printf( esc_attr__( 'Permalink to %s', 'frontopen' ), the_title_attribute( 'echo=0' ) ); ?>"><?php } ?><?php if($ifpic != 'checked'){ ?>
 	<?php if ( has_post_thumbnail() ) { ?>
     <?php post_thumbnail($imgW,$imgH,lateLoad('data-').'src');
+
 		if(has_excerpt()) the_excerpt();
 		else
 		echo dm_strimwidth(strip_tags($post->post_content),0,$dis_num,'....');}
@@ -80,7 +83,7 @@ intval(get_option('themes_fo2_image_height')) ? $imgH = intval(get_option('theme
         </a><?php }?>
 
         <!-----自定义功能代码---->
-        <div style="position:absolute;bottom:25px;width:100%"><center><a href="<?php echo get_post_meta(get_the_ID(), "vlink_value", $single = true); ?>" style="color:#FF6100;">播放</a></center></div>
+        <!-- <div style="position:absolute;bottom:25px;width:100%"><center><a href="<?php echo get_post_meta(get_the_ID(), "vlink_value", $single = true); ?>" style="color:#FF6100;">播放</a></center></div> -->
 
 
 <a href="<?php the_permalink(); ?>" class="more-link"><?php if(get_option('themes_fo2_readmore')){echo get_option('themes_fo2_readmore');}else{echo "Read More >";}?></a><div class="cls"></div>
