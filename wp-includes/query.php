@@ -1353,7 +1353,7 @@ class WP_Query {
 		unset($this->queried_object);
 		unset($this->queried_object_id);
 		$this->post_count = 0;
-		$this->current_post = -1;
+		$this->currentinit_post = -1;
 		$this->in_the_loop = false;
 		unset( $this->request );
 		unset( $this->post );
@@ -2626,6 +2626,7 @@ class WP_Query {
 		} else {
 			// Used to filter values
 			$allowed_keys = array('name', 'author', 'date', 'title', 'modified', 'menu_order', 'parent', 'ID', 'rand', 'comment_count');
+			//$allowed_keys[] = 'level';
 			if ( !empty($q['meta_key']) ) {
 				$allowed_keys[] = $q['meta_key'];
 				$allowed_keys[] = 'meta_value';
@@ -2677,6 +2678,7 @@ class WP_Query {
 				$orderby = "$wpdb->posts.post_date ".$q['order'];
 			else
 				$orderby .= " {$q['order']}";
+			//debug_logger('orderby:'.$orderby);
 		}
 
 		// Order search results by relevance only when another "orderby" is not specified in the query.

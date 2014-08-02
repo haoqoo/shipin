@@ -2758,6 +2758,7 @@ function wp_parse_args( $args, $defaults = '' ) {
 
 	if ( is_array( $defaults ) )
 		return array_merge( $defaults, $r );
+	
 	return $r;
 }
 

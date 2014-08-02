@@ -296,7 +296,7 @@ unset( $messages );
 $_SERVER['REQUEST_URI'] = remove_query_arg( array( 'locked', 'skipped', 'updated', 'deleted', 'trashed', 'untrashed' ), $_SERVER['REQUEST_URI'] );
 ?>
 
-<?php $wp_list_table->views(); ?>
+<?php $wp_list_table->views(); ?><!-- 统计数量 -->
 
 <form id="posts-filter" action="" method="get">
 

@@ -44,8 +44,10 @@ intval(get_option('themes_fo2_image_height')) ? $imgH = intval(get_option('theme
 ?>
 <?php
   global $query_string;
-  //debug_logger('query_string:'.$query_string);
-  query_posts( $query_string . '&ignore_sticky_posts=1' );
+  
+  //是否考虑直接用menu_order这个字段进行排序
+  //如果使用添加的字段排序，命名规则必需是post_xxx,且需要在query.php 2629行对$allow_keys添加对应的xxx。
+  query_posts( $query_string . '&ignore_sticky_posts=1&orderby=level' );
 ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
@@ -86,7 +88,7 @@ intval(get_option('themes_fo2_image_height')) ? $imgH = intval(get_option('theme
         <!-- <div style="position:absolute;bottom:25px;width:100%"><center><a href="<?php echo get_post_meta(get_the_ID(), "vlink_value", $single = true); ?>" style="color:#FF6100;">播放</a></center></div> -->
 
 
-<a href="<?php the_permalink(); ?>" class="more-link"><?php if(get_option('themes_fo2_readmore')){echo get_option('themes_fo2_readmore');}else{echo "Read More >";}?></a><div class="cls"></div>
+<a href="<?php the_permalink(); ?>" class="more-link"><?php if(get_option('themes_fo2_readmore')){echo get_option('themes_fo2_readmore');}else{echo "前往观看 >";}?></a><div class="cls"></div>
     </div>
     <div class="c-bot">
     <?php the_tags('<aside class="cb_bq"><i class="icon-tag icon-large"></i> ', '，', '</aside>'); ?><?php edit_post_link('编辑', '<i class="icon-edit icon-large"></i> ', ''); ?>

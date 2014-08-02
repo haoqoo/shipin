@@ -760,7 +760,8 @@ class WP_List_Table {
 	 * @access public
 	 */
 	function display() {
-		extract( $this->_args );
+		print_r($this->_args);
+		extract( $this->_args );//数组中的每个元素，键名用于变量名，键值用于变量值。
 
 		$this->display_tablenav( 'top' );
 
