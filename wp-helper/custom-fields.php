@@ -10,6 +10,8 @@
 		//写文章时，添加的固定字段，视频地址
 		add_action('add_meta_boxes', 'create_meta_box');      
     	add_action('save_post', 'save_postdata');
+
+    	//add_shortcode('swf','swf_player');
 	}
 
 	//发布文章时，添加评分字段，该字段不可见，发表文章时自动添加
@@ -145,6 +147,15 @@
               array( '%s', '%s' ),
               array( '%d' )  
       );
-    }       
+    }
+
+    function swf_player2($atts, $content = null) {
+		extract(shortcode_atts(array("width"=>'480',"height"=>'360'),$atts));
+		//$width = 480;
+		//$height = 360;
+		return '<embed type="application/x-shockwave-flash" width="'.$width.'" height="'.$height.'" src="'.$content.'"></embed>';
+	}
+	add_shortcode('myswf','swf_player2');
+	 
 
  ?>
