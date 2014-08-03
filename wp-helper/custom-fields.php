@@ -149,13 +149,13 @@
       );
     }
 
-    function swf_player2($atts, $content = null) {
+    function swf_player($atts, $content) {
 		extract(shortcode_atts(array("width"=>'480',"height"=>'360'),$atts));
 		//$width = 480;
-		//$height = 360;
+		//$height = 360;		
 		return '<embed type="application/x-shockwave-flash" width="'.$width.'" height="'.$height.'" src="'.$content.'"></embed>';
 	}
-	add_shortcode('myswf','swf_player2');
+	add_shortcode('swf','swf_player');
 	 
 
  ?>
