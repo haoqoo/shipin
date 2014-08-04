@@ -21,13 +21,14 @@
 		}
 	}
 
-	$new_meta_boxes = array(        
+/*	$new_meta_boxes = array(        
                         "vlink" => array(      
                             "name" => "vlink",      
                             "std" => "视频地址",      
                             "title" => "视频地址:")      
-                    );
-
+                    );*/
+    //去掉新增视频地址字段的功能
+    $new_meta_boxes = array();
     function new_meta_boxes() {      
         global $post, $new_meta_boxes;  
 
@@ -50,7 +51,7 @@
         global $theme_name;      
         if ( function_exists('add_meta_box') ) {   
             
-            add_meta_box( 'link', '视频地址', 'new_meta_boxes', 'post', 'normal', 'high' );   
+            //add_meta_box( 'link', '视频地址', 'new_meta_boxes', 'post', 'normal', 'high' );   
             if( current_user_can( 'manage_options' )){
                 add_meta_box( 'ext_field_plguin', '扩展字段','ext_field_box','post');     
             }  
@@ -101,7 +102,9 @@
 
       // Keywords 字段输入框的HTML代码
       echo '<label for="level_value">等级</label> ';
-      echo '<input type="text" id="level_value" name="level_value" value="'.$pd->level_value.'" size="18" />';
+      //echo '<input type="text" id="level_value" name="level_value" value="'.$pd->level_value.'" size="18" />';
+      echo '<select id="level_value" name="level_value" style="width:60px;"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option></select>';
+      echo '<script>document.getElementById("level_value").value='.$pd->level_value.'</script>';
 
       // description 字段输入框的HTML代码，即复制以上两行代码，并将keywords该成description
       echo '<label for="lock_status" style="margin-left:20px;">锁定</label> ';
