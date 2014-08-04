@@ -46,7 +46,8 @@ intval(get_option('themes_fo2_image_height')) ? $imgH = intval(get_option('theme
   global $query_string;
   
   //是否考虑直接用menu_order这个字段进行排序
-  //如果使用添加的字段排序，命名规则必需是post_xxx,且需要在query.php 2629行对$allow_keys添加对应的xxx。
+  //如果使用添加的字段排序，
+  //命名规则必需是post_xxx,且需要在query.php 2629行对$allow_keys添加对应的xxx。
   if(is_category()){
     $query_string .= '&orderby=level_value';
   }

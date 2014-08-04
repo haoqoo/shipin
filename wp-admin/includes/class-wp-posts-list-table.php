@@ -704,6 +704,8 @@ class WP_Posts_List_Table extends WP_List_Table {
 				echo '</td>';
 			break;
 
+			
+
 			case 'date':
 				if ( '0000-00-00 00:00:00' == $post->post_date ) {
 					$t_time = $h_time = __( 'Unpublished' );
@@ -849,7 +851,8 @@ class WP_Posts_List_Table extends WP_List_Table {
 					 * @param string $column_name The name of the column to display.
 					 * @param int    $post_id     The current post ID.
 					 */
-					do_action( 'manage_posts_custom_column', $column_name, $post->ID );
+					//echo $post->level_value;
+					do_action( 'manage_posts_custom_column', $column_name, $post->ID ,$post->level_value);
 				}
 
 				/**

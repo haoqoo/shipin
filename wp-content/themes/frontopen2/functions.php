@@ -1486,6 +1486,7 @@ function setNewKeys($postID,$count_key,$countinput) {
 }
 
 /**********文章***********/
+//通过manage_posts_columns hook添加自定义column
 add_filter('manage_posts_columns', 'add_new_posts_columns');
 function add_new_posts_columns($book_columns) {
 	$new_columns['cb'] = '<input type="checkbox" />';
@@ -1493,20 +1494,23 @@ function add_new_posts_columns($book_columns) {
 	$new_columns['author'] = __('Author');
 	$new_columns['categories'] = __('Categories');
 	$new_columns['tags'] = __('Tags');
-	$new_columns['flag'] = __('推送');
+	$new_columns['level_value'] = __('内部等级');
 	$new_columns['date'] = _x('Date', 'column name');
 	return $new_columns;
 }
 
-add_action('manage_posts_custom_column', 'manage_posts_columns', 10, 2);
+//通过manage_posts_custom_column hook来获取数据库字段的值，
+//修改了class-wp-post-list-table.php里855行，增加level_value字段的值的传入
+add_action('manage_posts_custom_column', 'manage_posts_columns', 10, 3);
 
-function manage_posts_columns($column_name, $id){
-	$flagShow = array('f'=>'幻灯');
-	$flag = getNewKeys($id,'flag');
-
+function manage_posts_columns($column_name, $id,$level_value){
+	//这里可以通过post的id来取其相关联的数据
+	//$flagShow = array('f'=>'幻灯');
+	//$flag = getNewKeys($id,'flag');
+	//echo $column_name .' id -> '.$id . 'level_value -> ' . $level_value;
 	switch ($column_name){
-		case 'flag':
-		echo $flagShow[$flag];
+		case 'level_value':
+		echo $level_value;
 		break;
 		default:
 		break;
