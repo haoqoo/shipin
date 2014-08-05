@@ -154,11 +154,14 @@ $menu[59] = array( '', 'read', 'separator2', '', 'wp-menu-separator' );
 
 $appearance_cap = current_user_can( 'switch_themes') ? 'switch_themes' : 'edit_theme_options';
 
-$menu[60] = array( __('Appearance'), $appearance_cap, 'themes.php', '', 'menu-top menu-icon-appearance', 'menu-appearance', 'dashicons-admin-appearance' );
-	$submenu['themes.php'][5] = array( __( 'Themes' ), $appearance_cap, 'themes.php' );
-	$submenu['themes.php'][6] = array( __( 'Customize' ), 'edit_theme_options', 'customize.php', 'hide-if-no-customize' );
-	if ( current_theme_supports( 'menus' ) || current_theme_supports( 'widgets' ) )
-		$submenu['themes.php'][10] = array(__( 'Menus' ), 'edit_theme_options', 'nav-menus.php');
+//简化外观 只显示 菜单
+$menu[60] = array( __('Menus'), $appearance_cap, 'nav-menus.php', '', 'menu-top menu-icon-appearance', 'menu-appearance', 'dashicons-admin-appearance' );
+//外观
+// $menu[60] = array( __('Appearance'), $appearance_cap, 'themes.php', '', 'menu-top menu-icon-appearance', 'menu-appearance', 'dashicons-admin-appearance' );
+// 	$submenu['themes.php'][5] = array( __( 'Themes' ), $appearance_cap, 'themes.php' );
+// 	$submenu['themes.php'][6] = array( __( 'Customize' ), 'edit_theme_options', 'customize.php', 'hide-if-no-customize' );
+// 	if ( current_theme_supports( 'menus' ) || current_theme_supports( 'widgets' ) )
+// 		$submenu['themes.php'][10] = array(__( 'Menus' ), 'edit_theme_options', 'nav-menus.php');
 
 unset( $appearance_cap );
 
@@ -233,11 +236,13 @@ if (!HIDDEN_TOOL) {
 
 $menu[80] = array( __('Settings'), 'manage_options', 'options-general.php', '', 'menu-top menu-icon-settings', 'menu-settings', 'dashicons-admin-settings' );
 	$submenu['options-general.php'][10] = array(_x('General', 'settings screen'), 'manage_options', 'options-general.php');
-	$submenu['options-general.php'][15] = array(__('Writing'), 'manage_options', 'options-writing.php');
+	/*$submenu['options-general.php'][15] = array(__('Writing'), 'manage_options', 'options-writing.php');*/
 	$submenu['options-general.php'][20] = array(__('Reading'), 'manage_options', 'options-reading.php');
 	$submenu['options-general.php'][25] = array(__('Discussion'), 'manage_options', 'options-discussion.php');
-	$submenu['options-general.php'][30] = array(__('Media'), 'manage_options', 'options-media.php');
-	$submenu['options-general.php'][40] = array(__('Permalinks'), 'manage_options', 'options-permalink.php');
+	/*$submenu['options-general.php'][30] = array(__('Media'), 'manage_options', 'options-media.php');*/
+	/*$submenu['options-general.php'][40] = array(__('Permalinks'), 'manage_options', 'options-permalink.php');*/
+	
+
 
 $_wp_last_utility_menu = 80; // The index of the last top-level menu in the utility menu group
 

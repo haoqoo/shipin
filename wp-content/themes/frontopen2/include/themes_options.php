@@ -1,22 +1,21 @@
 <div class="wrap">
 <div id="icon-themes" class="icon32"><br /></div>
 <h2 class="nav-tab-wrapper" id="bak_nav_a">
-<a href="javascript:void()" class="nav-tab nav-tab-active">主题设置</a><a href="javascript:void()" class="nav-tab">功能设置</a><a href="javascript:void()" class="nav-tab">运营相关</a><a href="javascript:void()" class="nav-tab">自定义文字</a><a href="javascript:void()" class="nav-tab">SEO三标签</a><a href="javascript:void()" class="nav-tab">插件集成</a><a href="javascript:void()" class="nav-tab">自定义CSS</a>
+<a href="javascript:void()" class="nav-tab nav-tab-active">Logo设置</a>
+<!-- <a href="javascript:void()" class="nav-tab">功能设置</a> -->
+<a href="javascript:void()" class="nav-tab">前台广告</a>
+<!-- <a href="javascript:void()" class="nav-tab">自定义文字</a>
+ --><a href="javascript:void()" class="nav-tab">SEO标签</a>
+<!-- <a href="javascript:void()" class="nav-tab">插件集成</a>
+<a href="javascript:void()" class="nav-tab">自定义CSS</a> -->
 </h2>
 
 <form method="POST" action="" id="config_from">
 <input type="hidden" name="update_themeoptions" value="true" />
 <div class="nav-tab-box">
-<h3>网站标题</h3>
+
 <table class="form-table">
-<tr>
-<th scope="row">主标题</th>
-<td><input type="text" name="fo2_logo" id="fo2_logo" size="50" value="<?php echo get_option('themes_fo2_logo'); ?>"></td>
-</tr>
-<tr>
-<th scope="row">副标题</th>
-<td><input type="text" name="fo2_small_title" id="fo2_small_title" size="50" value="<?php echo get_option('themes_fo2_small_title'); ?>"></td>
-</tr>
+
 <tr>
 <th scope="row">网站logo</th>
 <td width="350">
@@ -41,41 +40,7 @@
 <td><img src="http://<?php echo $_SERVER['HTTP_HOST'] ?>/favicon.ico" /></td>
 </tr>
 </table>
-<br /><br />
 
-<h3>订阅右侧按钮设置</h3>
-<table class="form-table">
-<tr>
-<th scope="row">按钮文字</th>
-<td><input type="text" name="fo2_top_right_btn_text" id="fo2_top_right_btn_text" size="50" value="<?php echo get_option('themes_fo2_top_right_btn_text'); ?>"></td>
-</tr>
-<tr>
-<th scope="row">按钮链接</th>
-<td><input type="text" name="fo2_top_right_btn_url" id="fo2_top_right_btn_url" size="50" value="<?php echo get_option('themes_fo2_top_right_btn_url'); ?>"></td>
-</tr>
-<tr>
-<th scope="row">超链接title</th>
-<td><input type="text" name="fo2_top_right_btn_title" id="fo2_top_right_btn_title" size="50" value="<?php echo get_option('themes_fo2_top_right_btn_title'); ?>"></td>
-</tr>
-<tr>
-<th scope="row">rel</th>
-<td><input type="text" name="fo2_top_right_btn_rel" id="fo2_top_right_btn_rel" size="50" value="<?php echo get_option('themes_fo2_top_right_btn_rel'); ?>"></td>
-<td>默认为空，SEO可以使用nofollow，external nofollow</td>
-</tr>
-<tr>
-<th scope="row">超链跳转方式</th>
-<td width="350">
-<?php $target1 = get_option('themes_fo2_top_right_btn_target'); ?>
-<select name ="fo2_top_right_btn_target">
-  <option value="_self" <?php if ($target1=="_self") { echo 'selected'; } ?> >_self</option>
-  <option value="_blank" <?php if ($target1=="_blank") { echo 'selected'; } ?> >_blank</option>
-  <option value="new" <?php if ($target1=="new") { echo 'selected'; } ?> >new</option>
-  <option value="_parent" <?php if ($target1=="_parent") { echo 'selected'; } ?> >_parent</option>
-  <option value="_top" <?php if ($target1=="_top") { echo 'selected'; } ?> >_top</option>
-</select></td>
-<td>默认为_self</td>
-</tr>
-</table>
 <br /><br />
 
 <h3>网站底部信息</h3>
@@ -102,7 +67,7 @@
 </div><!--box1-->
 
 
-<div class="nav-tab-box" style="display:none;">
+<!-- <div class="nav-tab-box" style="display:none;">
 <h3>admin_bar控制</h3>
 <table class="form-table">
 <tr>
@@ -344,11 +309,11 @@ foreach($s['primary-widget-area'] as $skey){
 </table>
 <br /><br />
 
-</div><!--box2-->
+</div> --><!--box2-->
 
 <div class="nav-tab-box" style="display:none">
 
-<h3>捐赠功能的支付宝收款地址</h3>
+<!-- <h3>捐赠功能的支付宝收款地址</h3>
 <table class="form-table">
 <tr>
 <th scope="row">收款地址</th>
@@ -362,7 +327,7 @@ foreach($s['primary-widget-area'] as $skey){
 <td>开启作者收款功能后，上面的收款地址将失效。捐赠功能将调取用户填写在个人资料的aim中的地址作为收款地址。开启该功能后请向用户做相应说明。</td>
 </tr>
 </table>
-<br /><br />
+<br /><br /> -->
 
 <h3>广告位代码管理</h3>
 <table class="form-table">
@@ -383,7 +348,7 @@ foreach($s['primary-widget-area'] as $skey){
 
 </div><!--box3-->
 
-<div class="nav-tab-box" style="display:none">
+<!-- <div class="nav-tab-box" style="display:none">
 <h3>搜索栏文字设置</h3>
 <table class="form-table">
 <tr>
@@ -428,10 +393,10 @@ foreach($s['primary-widget-area'] as $skey){
 </table>
 <br /><br />
 
-</div><!--box4-->
+</div> --><!--box4-->
 
 <div class="nav-tab-box" style="display:none">
-<h3>主题SEO三标签功能</h3>
+<!-- <h3>主题SEO三标签功能</h3>
 <table class="form-table">
 <tr>
 <th scope="row">启用</th>
@@ -441,15 +406,15 @@ foreach($s['primary-widget-area'] as $skey){
 <td>开启后将使用主题自带的站点title keyword description 功能</td>
 </tr>
 </table>
-<br /><br />
+<br /><br /> -->
 
-<h3>首页SEO三标签</h3>
+<h3>SEO标签</h3>
 <table class="form-table">
-<tr>
+<!-- <tr>
 <th scope="row">首页标题</th>
 <td width="350"><input type="text" name="fo2_seo_ht" id="fo2_seo_ht" size="50" value="<?php echo get_option('themes_fo2_seo_ht'); ?>"></td><td>站点首页的title标题，为空则自动调用WP后台填写的站点标题。（建议不要和SEO插件同时使用）</td>
 </tr>
-<tr>
+ --><tr>
 <th scope="row">首页keyword</th>
 <td width="350"><input type="text" name="fo2_seo_hk" id="fo2_seo_hk" size="50" value="<?php echo get_option('themes_fo2_seo_hk'); ?>"></td>
 </tr>
@@ -462,7 +427,8 @@ foreach($s['primary-widget-area'] as $skey){
 
 
 </div><!--box5-->
-<div class="nav-tab-box" style="display:none">
+
+<!-- <div class="nav-tab-box" style="display:none">
 <h3>短代码功能设置</h3>
 <table class="form-table">
 <tr>
@@ -493,7 +459,7 @@ foreach($s['primary-widget-area'] as $skey){
 <p>此处的样式将会替换默认的style.css中的样式，并且其值会保存在数据库中，升级主题不会对自定义过的样式造成覆盖。</p> 
 <textarea name="fo2_css" cols="150" rows="30" id="fo2_css" style="width:100%"><?php echo get_option('themes_fo2_css'); ?></textarea>
 
-</div><!--box7-->
+</div> --><!--box7-->
 
 <p><input style="position: fixed;bottom: 50px;height: 40px;width: 10%;" type="submit" name="submit" id="submit" class="button button-primary" value="保存更改"></p>
 </form>
