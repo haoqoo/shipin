@@ -100,14 +100,14 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 <p class="description"><?php _e('In a few words, explain what this site is about.') ?></p></td>
 </tr>
 <?php if ( !is_multisite() ) { ?>
-<tr>
+<!-- <tr>
 <th scope="row"><label for="siteurl"><?php _e('WordPress Address (URL)') ?></label></th>
 <td><input name="siteurl" type="text" id="siteurl" value="<?php form_option('siteurl'); ?>"<?php disabled( defined( 'WP_SITEURL' ) ); ?> class="regular-text code<?php if ( defined( 'WP_SITEURL' ) ) echo ' disabled' ?>" /></td>
-</tr>
+</tr> -->
 <tr>
 <th scope="row"><label for="home"><?php _e('Site Address (URL)') ?></label></th>
 <td><input name="home" type="text" id="home" value="<?php form_option('home'); ?>"<?php disabled( defined( 'WP_HOME' ) ); ?> class="regular-text code<?php if ( defined( 'WP_HOME' ) ) echo ' disabled' ?>" />
-<p class="description"><?php _e('Enter the address here if you want your site homepage <a href="http://codex.wordpress.org/Giving_WordPress_Its_Own_Directory">to be different from the directory</a> you installed WordPress.'); ?></p></td>
+</td>
 </tr>
 <tr>
 <th scope="row"><label for="admin_email"><?php _e('E-mail Address') ?> </label></th>
@@ -301,7 +301,7 @@ endfor;
 ?>
 </select></td>
 </tr>
-<?php do_settings_fields('general', 'default'); ?>
+<!--<?php do_settings_fields('general', 'default'); ?>-->
 <?php
 	$languages = get_available_languages();
 	if ( is_multisite() && !empty( $languages ) ):
