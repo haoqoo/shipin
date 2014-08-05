@@ -1500,7 +1500,7 @@ function add_new_posts_columns($book_columns) {
 }
 
 //通过manage_posts_custom_column hook来获取数据库字段的值，
-//修改了class-wp-post-list-table.php里855行，增加level_value字段的值的传入
+//修改了class-wp-post-list-table.php里855行，增加level_value字段的值的参数传入
 add_action('manage_posts_custom_column', 'manage_posts_columns', 10, 3);
 
 function manage_posts_columns($column_name, $id,$level_value){

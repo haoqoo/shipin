@@ -53,7 +53,7 @@
             
             //add_meta_box( 'link', '视频地址', 'new_meta_boxes', 'post', 'normal', 'high' );   
             if( current_user_can( 'manage_options' )){
-                add_meta_box( 'ext_field_plguin', '扩展字段','ext_field_box','post');     
+                add_meta_box( 'ext_field_plguin', '等级设置','ext_field_box','post','normal', 'high' );     
             }  
             
         }      
