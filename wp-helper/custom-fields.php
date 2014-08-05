@@ -103,18 +103,23 @@
       // Keywords 字段输入框的HTML代码
       echo '<label for="level_value">等级</label> ';
       //echo '<input type="text" id="level_value" name="level_value" value="'.$pd->level_value.'" size="18" />';
-      echo '<select id="level_value" name="level_value" style="width:60px;"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option></select>';
-      echo '<script>document.getElementById("level_value").value='.$pd->level_value.'</script>';
-
+      echo '<select onchange="setlv(this)" id="level_value" name="level_value" style="width:60px;"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option></select>';
+      
       // description 字段输入框的HTML代码，即复制以上两行代码，并将keywords该成description
       echo '<label for="lock_status" style="margin-left:20px;">锁定</label> ';
+      echo '<input type="hidden" id="ls" name="ls" ><input type="hidden" id="lv" name="lv" value="'.$pd->level_value.'">';
+
       if($pd->lock_status == "true"){
         echo '<input style="vertical-align:middle;" type="checkbox" id="lock_status" name="lock_status" checked="checked" onclick="setLock(this)" />';    
+        echo '<script>document.getElementById("ls").value="true";document.getElementById("level_value").disabled=true;</script>';
       }else{
         echo '<input style="vertical-align:middle;" type="checkbox" id="lock_status" name="lock_status" onclick="setLock(this)" />';    
       }
-      echo '<input type="hidden" id="ls" name="ls" ><script>function setLock(ck){if(ck.checked){document.getElementById("ls").value="true";}else{document.getElementById("ls").value="false";}}</script>';
       
+      echo '<script>document.getElementById("level_value").value='.$pd->level_value.';';
+      echo 'function setLock(ck){if(ck.checked){document.getElementById("ls").value="true";document.getElementById("level_value").disabled=true;}else{document.getElementById("ls").value="false";document.getElementById("level_value").disabled=false;}}';
+      echo 'function setlv(level){document.getElementById("lv").value=level.value;}';
+      echo '</script>';
       // 多个字段依此类推
     }
 
@@ -137,7 +142,7 @@
     }
 
       // 获取编写文章时填写的固定字段的值，多个字段依此类推
-      $levelValue = $_POST['level_value'];
+      $levelValue = $_POST['lv'];
       $lockStatus = $_POST['ls'];
        
       // 更新数据库，此处wp_posts新添加的字段为keywords和description，多个根据你的情况修改
