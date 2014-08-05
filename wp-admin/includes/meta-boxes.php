@@ -432,14 +432,14 @@ function post_categories_meta_box( $post, $box ) {
 	<div id="taxonomy-<?php echo $taxonomy; ?>" class="categorydiv">
 		<ul id="<?php echo $taxonomy; ?>-tabs" class="category-tabs">
 			<li class="tabs"><a href="#<?php echo $taxonomy; ?>-all"><?php echo $tax->labels->all_items; ?></a></li>
-			<li class="hide-if-no-js"><a href="#<?php echo $taxonomy; ?>-pop"><?php _e( 'Most Used' ); ?></a></li>
+			<!-- <li class="hide-if-no-js"><a href="#<?php echo $taxonomy; ?>-pop"><?php _e( 'Most Used' ); ?></a></li> -->
 		</ul>
 
-		<div id="<?php echo $taxonomy; ?>-pop" class="tabs-panel" style="display: none;">
+		<!-- <div id="<?php echo $taxonomy; ?>-pop" class="tabs-panel" style="display: none;">
 			<ul id="<?php echo $taxonomy; ?>checklist-pop" class="categorychecklist form-no-clear" >
 				<?php $popular_ids = wp_popular_terms_checklist($taxonomy); ?>
 			</ul>
-		</div>
+		</div> -->
 
 		<div id="<?php echo $taxonomy; ?>-all" class="tabs-panel">
 			<?php
