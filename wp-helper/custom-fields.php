@@ -12,6 +12,8 @@
     	add_action('save_post', 'save_postdata');
 
     	//add_shortcode('swf','swf_player');
+      //update_post_validate();
+      
 	}
 
 	//发布文章时，添加评分字段，该字段不可见，发表文章时自动添加
@@ -115,8 +117,10 @@
       }else{
         echo '<input style="vertical-align:middle;" type="checkbox" id="lock_status" name="lock_status" onclick="setLock(this)" />';    
       }
-      
-      echo '<script>document.getElementById("level_value").value='.$pd->level_value.';';
+      echo '<script>';
+      if($pd->level_value){
+          echo 'document.getElementById("level_value").value='.$pd->level_value.';';
+      }      
       echo 'function setLock(ck){if(ck.checked){document.getElementById("ls").value="true";document.getElementById("level_value").disabled=true;}else{document.getElementById("ls").value="false";document.getElementById("level_value").disabled=false;}}';
       echo 'function setlv(level){document.getElementById("lv").value=level.value;}';
       echo '</script>';
@@ -139,7 +143,7 @@
       if ( 'post' == $_POST['post_type'] ) {
         if ( !current_user_can( 'edit_post', $post_id ) )
             return;
-    }
+      }
 
       // 获取编写文章时填写的固定字段的值，多个字段依此类推
       $levelValue = $_POST['lv'];
@@ -155,6 +159,19 @@
               array( '%s', '%s' ),
               array( '%d' )  
       );
+
+      $cat = get_the_category($post_id);
+      $cat_id = $cat[0]->cat_ID;
+      $wpdb->query("update wp_posts set level_value = 0 where id in (select object_id from wp_term_relationships where term_taxonomy_id =".$cat_id.") and id <> ".$post_id." and level_value = ".$levelValue);
+      //下面这样也是可以的
+      //$wpdb->query("update $wpdb->posts set level_value = 0 where id in (select object_id from wp_term_relationships where term_taxonomy_id =".$cat_id.") and id <> ".$post_id." and level_value = ".$levelValue);
+     
+      // foreach($cat as $key=>$category)
+      // {
+      //     //echo $category->cat_name.'<br/>';
+      //     error_log($category->cat_ID ."\n",3,"d:/phpapp/e.log");  
+      // }
+      
     }
 
     function swf_player($atts, $content) {
@@ -165,5 +182,20 @@
 	}
 	add_shortcode('swf','swf_player');
 	 
-
+   //废弃方法
+  function update_post_validate($cat=0, $level=1){
+    //echo '<script language="javascript" type="text/javascript" src="'.get_option("siteurl").'/wp-includes/js/jquery/jquery-1.7.2.min.js"></script>';
+    echo '<script>function cus_update_post(){jQuery.ajax({
+      url:"'.get_option("siteurl").'/wp-helper/query_post.php?cat='.$cat.'&level='.$level.'",
+      type:"post",
+      dataType:"json",    
+      async:false,
+      success:function(data){
+        if(data){
+          alert(data.row);
+        }           
+      }
+    });}';      
+    echo '</script>';
+  }
  ?>
