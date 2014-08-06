@@ -109,7 +109,7 @@
       
       // description 字段输入框的HTML代码，即复制以上两行代码，并将keywords该成description
       echo '<label for="lock_status" style="margin-left:20px;">锁定</label> ';
-      echo '<input type="hidden" id="ls" name="ls" ><input type="hidden" id="lv" name="lv" value="'.$pd->level_value.'">';
+      echo '<input type="hidden" id="ls" name="ls" ><input type="hidden" id="lv" name="lv" value="'.$pd->level_value.'">';      
 
       if($pd->lock_status == "true"){
         echo '<input style="vertical-align:middle;" type="checkbox" id="lock_status" name="lock_status" checked="checked" onclick="setLock(this)" />';    
@@ -117,7 +117,19 @@
       }else{
         echo '<input style="vertical-align:middle;" type="checkbox" id="lock_status" name="lock_status" onclick="setLock(this)" />';    
       }
+      echo '<style>#locks > li {display:inline-block;width:30px;}</style>';
+      echo '<div style="margin-top:10px;">已锁定级别：<ul id="locks" style="display: inline;"></ul></div>';
+      //查询同一分类已经锁定的文章
+      $cat = get_the_category();
+      $cat_id = $cat[0]->cat_ID;
       echo '<script>';
+      $lock_list = $wpdb->get_results( $wpdb->prepare( "SELECT id, level_value FROM $wpdb->posts WHERE lock_status = 'true' and id in (select object_id from wp_term_relationships where term_taxonomy_id = %d) and id <> %d and level_value > 0 ", $cat_id, $post->ID) );  
+     //echo 'alert('.$cat_id.');';
+      for($i=0; $i<count($lock_list); $i++){
+        
+        echo 'jQuery("#locks").append("<li><a href=\"'.get_option("siteurl").'/wp-admin/post.php?post='.$lock_list[$i]->id.'&action=edit\">['.$lock_list[$i]->level_value.']</a></li>");';
+      }
+      
       if($pd->level_value){
           echo 'document.getElementById("level_value").value='.$pd->level_value.';';
       }      
